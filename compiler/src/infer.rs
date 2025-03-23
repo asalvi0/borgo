@@ -2818,7 +2818,7 @@ has no field or method:
                 // i32 => Type
                 let mut vars: HashMap<i32, Type> = generics
                     .iter()
-                    .map(|(gen, var)| (*var, Type::ethereal(gen)))
+                    .map(|(item, var)| (*var, Type::ethereal(item)))
                     .collect();
 
                 // Restore the types we know about. This is necessary to support type aliases.

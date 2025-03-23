@@ -1,7 +1,7 @@
 [package]
 name = "wasm"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -10,7 +10,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 compiler = { path = "../compiler" }
-console_error_panic_hook = "0.1"
-serde = { version = "1.0", features = ["derive"] }
-serde-wasm-bindgen = "0.4"
-wasm-bindgen = "0.2"
+console_error_panic_hook = "0"
+serde = { version = "1", features = ["derive"] }
+serde-wasm-bindgen = "0"
+wasm-bindgen = "0"

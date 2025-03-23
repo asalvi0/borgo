@@ -34,16 +34,15 @@ fn build_project() {
         std::process::exit(1);
     }
 
-    {
-        let std = instance.gs.get_module(&ModuleId::from_str("std")).unwrap();
-        let user = instance.gs.get_module(&ModuleId::from_str("user")).unwrap();
+    let std = instance.gs.get_module(&ModuleId::from_str("std")).unwrap();
+    let user = instance.gs.get_module(&ModuleId::from_str("user")).unwrap();
 
-        let mut gen = codegen::Codegen::new(instance);
+    let mut gen1 = codegen::Codegen::new(instance);
 
-        // TODO should output multiple files, as many as in module.files
-        emit_files(gen.compile_module(&std));
-        emit_files(gen.compile_module(&user));
-    }
+    // TODO should output multiple files, as many as in module.files
+
+    emit_files(gen1.compile_module(&std));
+    emit_files(gen1.compile_module(&user));
 }
 
 fn emit_files(files: Vec<EmittedFile>) {

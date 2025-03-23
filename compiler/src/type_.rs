@@ -330,7 +330,7 @@ impl Type {
 
     pub fn remove_receiver(&mut self) {
         match self {
-            Type::Fun { ref mut args, .. } => {
+            Type::Fun { args, .. } => {
                 args.remove(0);
             }
             _ => unreachable!(),

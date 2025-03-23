@@ -964,11 +964,11 @@ impl Expr {
 
     pub fn as_result_constructor(&self) -> Option<std::result::Result<(), ()>> {
         let variant = match self {
-            Expr::Var { ref value, .. } => Some(value.as_str()),
+            Expr::Var { value, .. } => Some(value),
             _ => None,
         }?;
 
-        match variant {
+        match variant.as_str() {
             "Result.Ok" => Some(Ok(())),
             "Result.Err" => Some(Err(())),
             _ => None,
@@ -977,11 +977,11 @@ impl Expr {
 
     pub fn as_option_constructor(&self) -> Option<std::result::Result<(), ()>> {
         let variant = match self {
-            Expr::Var { ref value, .. } => Some(value.as_str()),
+            Expr::Var { value, .. } => Some(value),
             _ => None,
         }?;
 
-        match variant {
+        match variant.as_str() {
             "Option.Some" => Some(Ok(())),
             "Option.None" => Some(Err(())),
             _ => None,

@@ -61,13 +61,13 @@ pub fn compile_wasm(source: &str, val: JsValue) -> JsValue {
     let std = instance.gs.get_module(&ModuleId::from_str("std")).unwrap();
     let user = instance.gs.get_module(&ModuleId::from_str("user")).unwrap();
 
-    let mut gen = codegen::Codegen::new(instance);
+    let mut gen1 = codegen::Codegen::new(instance);
 
     // TODO asdf this shouldn't return an EmittedFile but rather the full source
     // with imports
 
-    let mut emitted = gen.compile_module(&std);
-    emitted.extend(gen.compile_module(&user));
+    let mut emitted = gen1.compile_module(&std);
+    emitted.extend(gen1.compile_module(&user));
 
     return serde_wasm_bindgen::to_value(&Output { error, emitted }).unwrap();
 }
